@@ -41,4 +41,4 @@ def predict_image(image):
 iface = gr.Interface(fn=predict_image, inputs=gr.inputs.Image(), outputs="text")
 
 # Launch the interface
-iface.launch(server_name="0.0.0.0",share=True)
+iface.launch(server_name="0.0.0.0")
