@@ -4,7 +4,6 @@ import torchvision.transforms as transforms
 from PIL import Image
 from torchvision import models, transforms
 import torch.nn as nn
-from flask import Flask, request, jsonify
 
 # Load the trained model
 model = models.resnet50(pretrained=True)
@@ -33,21 +32,11 @@ def predict_image(image):
         outputs = model(image)
         _, predicted = torch.max(outputs, 1)
         predicted_class = predicted.item()
-
+        
     return f"Predicted class: {predicted_class}"
 
-# Create a Gradio interface with the updated input syntax
+# Create a Gradio interface
 iface = gr.Interface(fn=predict_image, inputs="image", outputs="text")
 
-# Create a Flask app and route Gradio through a specific URL
-app = Flask(__name__)
-
-@app.route('/', methods=['POST'])
-def emeraldchat_prediction():
-    if request.method == 'POST':
-        image = request.files['image'].read()
-        prediction = iface.process([image])
-        return jsonify(prediction)
-
-if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=80)
+# Launch the interface
+iface.launch(server_name="127.0.0.1")
