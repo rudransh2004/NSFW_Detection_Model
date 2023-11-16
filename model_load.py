@@ -42,7 +42,7 @@ iface = gr.Interface(fn=predict_image, inputs="image", outputs="text")
 # Create a Flask app and route Gradio through a specific URL
 app = Flask(__name__)
 
-@app.route('/class.emeraldchat.com', methods=['POST'])
+@app.route('/', methods=['POST'])
 def emeraldchat_prediction():
     if request.method == 'POST':
         image = request.files['image'].read()
