@@ -36,7 +36,7 @@ def predict_image(image):
     return f"Predicted class: {predicted_class}"
 
 # Create a Gradio interface
-iface = gr.Interface(fn=predict_image, inputs=gr.inputs.Image(), outputs="text")
+iface = gr.Interface(fn=predict_image, inputs="image", outputs="text")
 
 # Launch the interface
 iface.launch(server_name="0.0.0.0")
