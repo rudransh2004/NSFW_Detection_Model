@@ -57,4 +57,4 @@ def index():
     return render_template('index.html', gradio_url="http://localhost:7860")
 
 if __name__ == '__main__':
-    app.run(port=8000)
+    app.run(port=443)
