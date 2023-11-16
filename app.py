@@ -54,7 +54,7 @@ threading.Thread(target=run_gradio, daemon=True).start()
 
 @app.route('/')
 def index():
-    return render_template('index.html', gradio_url="http://localhost:7860")
+    return render_template('index.html', gradio_url="http://0.0.0.0:7860")
 
 if __name__ == '__main__':
-    app.run(host="0.0.0.0", port=80)
+    app.run(host="0.0.0.0", port=8000)
