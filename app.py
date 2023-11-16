@@ -47,7 +47,7 @@ iface = gr.Interface(fn=predict_image, inputs="image", outputs="text")
 
 # Function to run Gradio app
 def run_gradio():
-    iface.launch(server_name="127.0.0.1")
+    iface.launch(server_name="0.0.0.0")
 
 # Run Gradio on a separate thread
 threading.Thread(target=run_gradio, daemon=True).start()
